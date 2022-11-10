@@ -1,7 +1,7 @@
 # Movie Query
 
  Simple Project for querying Movies from tMDB
-[Try the app]("./src/index.html")
+[Try the app](/src/index.html)
 
 ## Notes
 
