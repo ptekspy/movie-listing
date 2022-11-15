@@ -7,12 +7,12 @@ export const createEntry = (movie) => {
     const resultTemplate = document.getElementById("resultTemplate")
     const entry = resultTemplate.content.cloneNode(true)
     const root = entry.querySelector("div")
+    const favorite = entry.querySelector("i")
     root.addEventListener("click", () => {
         console.log("click")
         showDetails(movie)
     })
     root.id = movie.id
-    const favorite = entry.querySelector("i")
     if(isFavorite(movie)) {
         favorite.classList.add("favorite")
     }
