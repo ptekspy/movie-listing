@@ -10,17 +10,18 @@ const searchIcon = document.getElementById("fa-search-icon")
  * @param {string} searchValue input value to search
  */
 const searchAndUpdate = (searchValue = "") => {
-    searchMovies(searchValue).then(res => {
-        resultsContainer.innerHTML = ""
-        if (res.results.length === 0 || searchValue.length === 0) {
-            return
-        }
-        res.results.forEach(movie => {
-            resultsContainer.append(
-                createEntry(movie)
-            )
+    if (searchValue.length > 0) {
+        searchMovies(searchValue).then(res => {
+            resultsContainer.innerHTML = ""
+            if (res.results.length !== 0) {
+                res.results.forEach(movie => {
+                    resultsContainer.append(
+                        createEntry(movie)
+                    )
+                })
+            }
         })
-    })
+    }
 }
 
 export const init = () => {
@@ -30,7 +31,7 @@ export const init = () => {
     })
     searchBar.addEventListener(
         "input",
-        async ({target: {value}}) => {
+        ({target: {value}}) => {
             if (value.length === 0) return
             search(value)
         }
